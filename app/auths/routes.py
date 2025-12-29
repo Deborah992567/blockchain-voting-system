@@ -1,11 +1,12 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
 from sqlalchemy.orm import Session
 from pydantic import EmailStr
 from fastapi.security import OAuth2PasswordRequestForm
 
 from app.database.session import get_db
 from app.models.user import User
-from app.schemas.users import UserCreate
+from app.schemas.users import UserCreate, SocialLogin, OTPVerify
+from app.auths.otp import create_otp_for_user, verify_otp_for_user
 from app.auths.hashing import hash_password, verify_password
 from app.auths.tokens import generate_token, verify_token
 from app.auths.jwt import create_access_token
@@ -22,7 +23,7 @@ router = APIRouter(prefix="/auth", tags=["Auth"])
 # REGISTER
 # -------------------------------
 @router.post("/register")
-def register(user: UserCreate, db: Session = Depends(get_db)):
+def register(user: UserCreate, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
     logger.info("Registration attempt", email=user.email)
     existing = db.query(User).filter(User.email == user.email).first()
     if existing:
@@ -35,20 +36,56 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(new_user)
     logger.info("User created", user_id=new_user.id, email=new_user.email)
-
-    # Send verification email
+    # Send verification email (background)
     token = generate_token(user.email)
-    try:
-        send_email(
-            user.email,
-            "Verify Your Account",
-            f"http://localhost:3000/verify?token={token}"
-        )
-        logger.info("Verification email sent", email=user.email)
-    except Exception:
-        logger.exception("Failed to send verification email", email=user.email)
+    background_tasks.add_task(send_email, user.email, "Verify Your Account", f"http://localhost:3000/verify?token={token}")
 
-    return {"message": "Registration successful. Check email to verify account."}
+    # Create OTP for 2FA / verification and send via BackgroundTasks
+    otp = create_otp_for_user(db, new_user)
+    background_tasks.add_task(send_email, new_user.email, "Your verification code", f"Your code is: {otp.code}")
+    logger.info("Verification tasks scheduled", user_id=new_user.id)
+
+    return {"message": "Registration successful. Check email for a verification code and link."}
+
+
+@router.post("/verify-otp")
+def verify_otp(payload: OTPVerify, db: Session = Depends(get_db)):
+    user = db.query(User).filter(User.email == payload.email).first()
+    if not user:
+        logger.warning("OTP verification failed: user not found", email=payload.email)
+        raise HTTPException(status_code=404, detail="User not found")
+
+    ok = verify_otp_for_user(db, user, payload.code)
+    if not ok:
+        raise HTTPException(status_code=400, detail="Invalid or expired code")
+
+    user.is_verified = True
+    db.commit()
+    logger.info("User verified via OTP", user_id=user.id, email=user.email)
+    return {"message": "Account verified"}
+
+
+@router.post("/social-login")
+def social_login(payload: SocialLogin, db: Session = Depends(get_db)):
+    """A lightweight social login endpoint. In production verify provider tokens.
+    Accepts provider, provider_id, and optional email. If user exists, returns token; otherwise creates one."""
+    logger.info("Social login attempt", provider=payload.provider, provider_id=payload.provider_id, email=payload.email)
+    user = None
+    if payload.email:
+        user = db.query(User).filter(User.email == payload.email).first()
+
+    if not user:
+        # Create user (no password) and mark verified
+        new_user = User(email=payload.email or f"{payload.provider_id}@{payload.provider}.local", password_hash="", is_verified=True)
+        db.add(new_user)
+        db.commit()
+        db.refresh(new_user)
+        user = new_user
+        logger.info("Created user via social login", user_id=user.id, email=user.email)
+
+    token = create_access_token({"sub": user.email})
+    logger.info("Social login successful", user_id=user.id, email=user.email)
+    return {"access_token": token, "token_type": "bearer"}
 
 # -------------------------------
 # EMAIL VERIFICATION
