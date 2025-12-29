@@ -41,6 +41,15 @@ class GitHubLogin(BaseModel):
     access_token: str
 
 
+class GoogleCode(BaseModel):
+    code: str
+    redirect_uri: str
+
+
+class GitHubCode(BaseModel):
+    code: str
+
+
 class OTPVerify(BaseModel):
     email: EmailStr
     code: str

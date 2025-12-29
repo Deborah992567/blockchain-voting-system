@@ -12,8 +12,9 @@ from app.auths.tokens import generate_token, verify_token
 from app.auths.jwt import create_access_token
 from app.services.email import send_email
 from app.utils.security import get_current_user
-from app.auths.oauth import verify_google_token, verify_github_token
+from app.auths.oauth import verify_google_token, verify_github_token, exchange_google_code, exchange_github_code
 from app.schemas.users import GoogleLogin, GitHubLogin
+from app.schemas.users import GoogleCode, GitHubCode
 from app.utils.logger import logger as base_logger
 
 # Bound logger with context
@@ -121,6 +122,72 @@ def social_google(payload: GoogleLogin, db: Session = Depends(get_db)):
 
     token = create_access_token({"sub": user.email})
     logger.info("Google login successful", user_id=user.id, email=user.email)
+    return {"access_token": token, "token_type": "bearer"}
+
+
+@router.post("/social/google/code")
+def social_google_code(payload: GoogleCode, db: Session = Depends(get_db)):
+    try:
+        data = exchange_google_code(payload.code, payload.redirect_uri)
+    except Exception as exc:
+        logger.warning("Google code exchange failed", error=str(exc))
+        raise HTTPException(status_code=400, detail="Invalid Google code")
+
+    provider_id = data.get("sub")
+    email = data.get("email")
+
+    user = None
+    if provider_id:
+        user = db.query(User).filter(User.google_id == provider_id).first()
+    if not user and email:
+        user = db.query(User).filter(User.email == email).first()
+
+    if not user:
+        user = User(email=email or f"{provider_id}@google.local", password_hash="", is_verified=True, google_id=provider_id)
+        db.add(user)
+        db.commit()
+        db.refresh(user)
+        logger.info("Created user via Google code login", user_id=user.id, email=user.email)
+    else:
+        if not user.google_id:
+            user.google_id = provider_id
+            db.commit()
+
+    token = create_access_token({"sub": user.email})
+    logger.info("Google code login successful", user_id=user.id, email=user.email)
+    return {"access_token": token, "token_type": "bearer"}
+
+
+@router.post("/social/github/code")
+def social_github_code(payload: GitHubCode, db: Session = Depends(get_db)):
+    try:
+        data = exchange_github_code(payload.code)
+    except Exception as exc:
+        logger.warning("GitHub code exchange failed", error=str(exc))
+        raise HTTPException(status_code=400, detail="Invalid GitHub code")
+
+    provider_id = str(data.get("id"))
+    email = data.get("email")
+
+    user = None
+    if provider_id:
+        user = db.query(User).filter(User.github_id == provider_id).first()
+    if not user and email:
+        user = db.query(User).filter(User.email == email).first()
+
+    if not user:
+        user = User(email=email or f"{provider_id}@github.local", password_hash="", is_verified=True, github_id=provider_id)
+        db.add(user)
+        db.commit()
+        db.refresh(user)
+        logger.info("Created user via GitHub code login", user_id=user.id, email=user.email)
+    else:
+        if not user.github_id:
+            user.github_id = provider_id
+            db.commit()
+
+    token = create_access_token({"sub": user.email})
+    logger.info("GitHub code login successful", user_id=user.id, email=user.email)
     return {"access_token": token, "token_type": "bearer"}
 
 
