@@ -10,3 +10,5 @@ class User(Base):
     role = Column(String, default="voter")  # "admin" or "voter"
     is_verified = Column(Boolean, default=False)
     wallet_private_key = Column(String, nullable=True)  # TEMP for testing
+    google_id = Column(String, nullable=True, unique=True)
+    github_id = Column(String, nullable=True, unique=True)

@@ -33,6 +33,14 @@ class SocialLogin(BaseModel):
     email: Optional[EmailStr] = None
 
 
+class GoogleLogin(BaseModel):
+    id_token: str
+
+
+class GitHubLogin(BaseModel):
+    access_token: str
+
+
 class OTPVerify(BaseModel):
     email: EmailStr
     code: str
