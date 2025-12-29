@@ -4,7 +4,7 @@ from app.routes import vote, results
 from app.database.base import Base
 from app.database.session import engine
 import uvicorn
-from app.models import user, election, candidate, vote, otp  # import all models (including OTP)
+from app.models import user, election, candidate, vote, otp, email_job  # import all models (including OTP and EmailJob)
 from app.utils.logger import logger as base_logger
 from app.tasks.scheduler import start_scheduler, stop_scheduler
 
