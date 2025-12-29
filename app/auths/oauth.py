@@ -1,6 +1,7 @@
 import requests
 from app.utils.logger import logger as base_logger
 from app.config import settings
+from app.utils.cache import get as cache_get, set as cache_set
 
 logger = base_logger.bind(context="auth.oauth")
 
@@ -9,6 +10,13 @@ def verify_google_token(id_token: str) -> dict:
     """Verify a Google ID token using Google's tokeninfo endpoint.
     Returns token payload dict on success, raises RuntimeError on failure."""
     logger.info("Verifying Google ID token")
+    # cache by id_token for short time to reduce external calls
+    cache_key = f"google_token:{id_token}"
+    cached = cache_get(cache_key)
+    if cached:
+        logger.debug("Using cached Google token verification", sub=cached.get("sub"))
+        return cached
+
     try:
         resp = requests.get("https://oauth2.googleapis.com/tokeninfo", params={"id_token": id_token}, timeout=5)
     except Exception:
@@ -26,6 +34,10 @@ def verify_google_token(id_token: str) -> dict:
         raise RuntimeError("Invalid Google token payload")
 
     logger.debug("Google token verified", sub=data.get("sub"), email=data.get("email"))
+    try:
+        cache_set(cache_key, data, ex=300)
+    except Exception:
+        logger.exception("Failed to cache Google token verification")
     return data
 
 
@@ -34,6 +46,12 @@ def verify_github_token(access_token: str) -> dict:
     Returns dict with at least 'id' and possibly 'email'."""
     logger.info("Verifying GitHub access token")
     headers = {"Authorization": f"token {access_token}", "Accept": "application/vnd.github+json"}
+    cache_key = f"github_token:{access_token}"
+    cached = cache_get(cache_key)
+    if cached:
+        logger.debug("Using cached GitHub token verification", id=cached.get("id"))
+        return cached
+
     try:
         resp = requests.get("https://api.github.com/user", headers=headers, timeout=5)
     except Exception:
@@ -59,6 +77,10 @@ def verify_github_token(access_token: str) -> dict:
             logger.exception("Failed to fetch GitHub user emails")
 
     logger.debug("GitHub token verified", id=data.get("id"), email=data.get("email"))
+    try:
+        cache_set(cache_key, data, ex=300)
+    except Exception:
+        logger.exception("Failed to cache GitHub token verification")
     return data
 
 

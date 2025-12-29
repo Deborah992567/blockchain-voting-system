@@ -20,8 +20,21 @@ def create_access_token(data: dict) -> str:
 
 def decode_access_token(token: str) -> dict:
     try:
+        # Try short-lived cache to reduce repeated JWT decoding
+        from app.utils.cache import get as cache_get, set as cache_set
+
+        cache_key = f"jwt:{token}"
+        cached = cache_get(cache_key)
+        if cached:
+            return cached
+
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[ALGORITHM])
         logger.debug("Token decoded", subject=payload.get("sub"))
+        # cache payload for short time (60s) to reduce CPU usage
+        try:
+            cache_set(cache_key, payload, ex=60)
+        except Exception:
+            pass
         return payload
     except Exception:
         logger.exception("Failed to decode token")

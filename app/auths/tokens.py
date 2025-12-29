@@ -18,8 +18,21 @@ def generate_token(email: str) -> str:
 def verify_token(token: str, max_age=3600):
     logger.debug("Verifying token", token=token)
     try:
+        # Try cache first
+        from app.utils.cache import get as cache_get, set as cache_set
+
+        cache_key = f"email_token:{token}"
+        cached = cache_get(cache_key)
+        if cached:
+            logger.debug("Token found in cache", email=cached)
+            return cached
+
         email = serializer.loads(token, salt="email-token", max_age=max_age)
         logger.debug("Token valid", email=email)
+        try:
+            cache_set(cache_key, email, ex=max_age)
+        except Exception:
+            logger.exception("Failed to cache token")
         return email
     except Exception:
         logger.exception("Token verification failed", token=token)
