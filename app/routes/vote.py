@@ -9,6 +9,8 @@ from app.models.candidate import Candidate
 from app.models.user import User
 from app.utils.security import get_current_user
 from app.utils.logger import logger as base_logger
+from app.blockchain.web3 import w3
+from eth_account.messages import encode_defunct
 
 logger = base_logger.bind(context="routes.vote")
 
@@ -52,6 +54,46 @@ def cast_vote(election_id: int, candidate_id: int, db: Session = Depends(get_db)
     db.refresh(vote)
     logger.info("Vote cast", vote_id=vote.id, user_id=user.id)
     return {"message": "Vote cast successfully", "vote_id": vote.id}
+
+
+@router.post('/submit-signature')
+def submit_signed_vote(payload: dict, db: Session = Depends(get_db), user = Depends(get_current_user)):
+    """Accept a signed vote message and record the vote after verifying signature.
+
+    Expected payload: { election_id: int, candidate_id: int, message: str, signature: str, tx_hash?: str }
+    """
+    election_id = payload.get('election_id')
+    candidate_id = payload.get('candidate_id')
+    message = payload.get('message')
+    signature = payload.get('signature')
+    tx_hash = payload.get('tx_hash')
+
+    if not (election_id and candidate_id and message and signature):
+        raise HTTPException(status_code=400, detail='Missing fields')
+
+    election = get_election_or_404(db, election_id)
+    candidate = get_candidate_or_404(db, candidate_id, election_id)
+
+    existing_vote = db.query(Vote).filter(Vote.user_id == user.id, Vote.election_id == election.id).first()
+    if existing_vote:
+        logger.warning('User already voted (signed path)', user_id=user.id, election_id=election_id)
+        raise HTTPException(status_code=400, detail='User has already voted in this election')
+
+    # Recover signer address from signature
+    try:
+        msg = encode_defunct(text=message)
+        recovered = w3.eth.account.recover_message(msg, signature=signature)
+    except Exception:
+        logger.exception('Failed to recover signer from signature')
+        raise HTTPException(status_code=400, detail='Invalid signature')
+
+    # Record vote with signature proof
+    vote = Vote(user_id=user.id, election_id=election.id, candidate_id=candidate.id, signature=signature, tx_hash=tx_hash, wallet_address=recovered)
+    db.add(vote)
+    db.commit()
+    db.refresh(vote)
+    logger.info('Signed vote recorded', vote_id=vote.id, user_id=user.id, wallet=recovered)
+    return {'message': 'Vote recorded (signed)', 'vote_id': vote.id, 'wallet': recovered}
 
 @router.delete("/retract-vote/{vote_id}")
 def retract_vote(vote_id: int, db: Session = Depends(get_db), user = Depends(get_current_user)):

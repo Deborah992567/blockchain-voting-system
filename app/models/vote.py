@@ -12,6 +12,10 @@ class Vote(Base):
     election_id = Column(Integer, ForeignKey("elections.id"), nullable=False)
     candidate_id = Column(Integer, ForeignKey("candidates.id"), nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+    # Optional cryptographic proof / tx information
+    signature = Column(String, nullable=True)
+    tx_hash = Column(String, nullable=True)
+    wallet_address = Column(String, nullable=True)
 
     # Relationships
     user = relationship('User', back_populates='votes')

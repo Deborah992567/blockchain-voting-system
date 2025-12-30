@@ -16,18 +16,31 @@ router = APIRouter(prefix="/elections", tags=["Elections"])
 
 @router.post("/", response_model=ElectionOut)
 def create_election(election: ElectionCreate, db: Session = Depends(get_db), admin=Depends(admin_only)):
-    logger.info("Create election requested", name=election.name)
-    # Deploy blockchain contract
-    contract_address = deploy_election(election.candidate_names)
+    logger.info("Create election requested", name=(election.name or election.title))
+
+    # Deploy blockchain contract with candidate names if provided
+    candidate_names = election.candidate_names or []
+    contract_address = None
+    if candidate_names:
+        try:
+            contract_address = deploy_election(candidate_names)
+        except Exception:
+            logger.exception("Failed to deploy election contract; continuing without contract")
 
     new_election = Election(
-        name=election.name,
+        name=(election.name or election.title),
         is_active=False,
         contract_address=contract_address
     )
     db.add(new_election)
     db.commit()
     db.refresh(new_election)
+
+    # Create candidate records (preserve order -> index)
+    for cname in candidate_names:
+        c = Candidate(name=cname, election_id=new_election.id)
+        db.add(c)
+    db.commit()
     logger.info("Election created", election_id=new_election.id, contract_address=contract_address)
     return new_election
 

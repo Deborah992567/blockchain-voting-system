@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from app.deps.timing import timing_dependency
 from app.routes import election, candidate, test, auth
 from app.routes import vote, results
 from app.database.base import Base
@@ -10,7 +11,36 @@ from app.tasks.scheduler import start_scheduler, stop_scheduler
 
 logger = base_logger.bind(context="app")
 
-app = FastAPI()
+app = FastAPI(dependencies=[Depends(timing_dependency)])
+
+# Register request timing middleware to log latency & processing time
+from app.middleware.request_timing import request_timing_middleware
+app.middleware('http')(request_timing_middleware)
+
+# CORS
+from fastapi.middleware.cors import CORSMiddleware
+from app.config import settings
+
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Metrics endpoint
+from fastapi.responses import Response
+from app.metrics import metrics_response, METRICS_ENABLED
+
+
+@app.get('/metrics')
+def metrics():
+    if not METRICS_ENABLED:
+        return Response('metrics disabled', status_code=503)
+    resp = metrics_response()
+    return Response(content=resp, media_type="text/plain; version=0.0.4; charset=utf-8")
 
 app.include_router(auth.router)
 app.include_router(election.router)

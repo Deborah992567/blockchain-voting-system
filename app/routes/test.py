@@ -10,3 +10,13 @@ def protected(user = Depends(get_current_user)):
         "email": user.email,
         "role": user.role
     }
+
+
+@router.get('/ping')
+def ping():
+    return {"message": "pong"}
+
+
+@router.get('/')
+def root():
+    return {"message": "Backend is alive!"}
