@@ -5,6 +5,7 @@ from app.models.election import Election
 from app.schemas.election import ElectionCreate, ElectionOut
 from app.utils.security import get_current_user, admin_only
 from app.blockchain.deploy import deploy_election
+from app.models.candidate import Candidate
 from app.utils.logger import logger as base_logger
 
 logger = base_logger.bind(context="routes.election")
@@ -59,3 +60,25 @@ def end_election(election_id: int, db: Session = Depends(get_db), admin=Depends(
 def list_elections(db: Session = Depends(get_db)):
     elections = db.query(Election).all()
     return elections
+
+
+@router.get("/{election_id}/details")
+def election_details(election_id: int, db: Session = Depends(get_db)):
+    election = db.query(Election).get(election_id)
+    if not election:
+        logger.warning("Election details not found", election_id=election_id)
+        raise HTTPException(status_code=404, detail="Election not found")
+
+    candidates = db.query(Candidate).filter(Candidate.election_id == election_id).order_by(Candidate.id).all()
+    # map candidates to an index order that corresponds to the deployed contract
+    payload_candidates = []
+    for idx, c in enumerate(candidates):
+        payload_candidates.append({"id": c.id, "name": c.name, "index": idx})
+
+    return {
+        "id": election.id,
+        "name": election.name or election.title,
+        "is_active": election.is_active,
+        "contract_address": getattr(election, 'contract_address', None),
+        "candidates": payload_candidates
+    }

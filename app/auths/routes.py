@@ -13,6 +13,7 @@ from app.auths.jwt import create_access_token
 from app.services.email import send_email
 from app.utils.security import get_current_user
 from app.auths.oauth import verify_google_token, verify_github_token, exchange_google_code, exchange_github_code
+from app.config import settings
 from app.schemas.users import GoogleLogin, GitHubLogin
 from app.schemas.users import GoogleCode, GitHubCode
 from app.utils.logger import logger as base_logger
@@ -222,6 +223,17 @@ def social_github(payload: GitHubLogin, db: Session = Depends(get_db)):
     token = create_access_token({"sub": user.email})
     logger.info("GitHub login successful", user_id=user.id, email=user.email)
     return {"access_token": token, "token_type": "bearer"}
+
+
+@router.get('/oauth-config')
+def oauth_config():
+    # expose client IDs for building auth URLs on the client side (no secrets)
+    return {
+        'google_client_id': settings.GOOGLE_CLIENT_ID,
+        'github_client_id': settings.GITHUB_CLIENT_ID,
+        'google_auth_url': 'https://accounts.google.com/o/oauth2/v2/auth',
+        'github_auth_url': 'https://github.com/login/oauth/authorize'
+    }
 
 # -------------------------------
 # EMAIL VERIFICATION

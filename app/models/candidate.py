@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, ForeignKey , DateTime, func
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, func
 from sqlalchemy.orm import relationship
 from app.database.base import Base
+
 
 class Candidate(Base):
     __tablename__ = "candidates"
@@ -9,8 +10,10 @@ class Candidate(Base):
     name = Column(String, nullable=False)
     election_id = Column(Integer, ForeignKey("elections.id"))
 
-    election = relationship("Election", backref="candidates")
-    votes = relationship("Vote", backref="candidate")
+    # Relationships
+    election = relationship("Election", back_populates="candidates")
+    votes = relationship("Vote", back_populates="candidate")
+
     photo_url = Column(String, nullable=True)
     manifesto = Column(String, nullable=True)
     party = Column(String, nullable=True)
