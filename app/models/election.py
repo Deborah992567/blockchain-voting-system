@@ -8,7 +8,9 @@ election_admins = Table(
     'election_admins',
     Base.metadata,
     Column('election_id', Integer, ForeignKey('elections.id'), primary_key=True),
-    Column('user_id', Integer, ForeignKey('users.id'), primary_key=True)
+    Column('user_id', Integer, ForeignKey('users.id'), primary_key=True),
+    # allow re-definition in test/import scenarios
+    extend_existing=True,
 )
 
 class Election(Base):

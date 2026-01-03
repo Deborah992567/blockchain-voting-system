@@ -5,9 +5,9 @@ from sqlalchemy import func
 from app.database.session import get_db
 from app.models.vote import Vote
 from app.models.candidate import Candidate
-from backend.app.blockchain.vote import cast_vote
-from backend.app.models.election import Election
-from backend.app.utils.security import get_current_user
+from app.blockchain.vote import cast_vote
+from app.models.election import Election
+from app.utils.security import get_current_user
 from app.utils.logger import logger as base_logger
 
 logger = base_logger.bind(context="routes.results")

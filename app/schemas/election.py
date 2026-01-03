@@ -7,9 +7,9 @@ class ElectionCreate(BaseModel):
     # Use 'name' as primary label; keep 'title' compatibility by allowing either in requests
     name: str
     title: Optional[str] = None
-    candidate_names: Optional[List[str]] = []
-    start_time: Optional[datetime]
-    end_time: Optional[datetime]
+    candidate_names: Optional[List[str]] = None
+    start_time: Optional[datetime] = None
+    end_time: Optional[datetime] = None
 
 class ElectionOut(BaseModel):
     id: int

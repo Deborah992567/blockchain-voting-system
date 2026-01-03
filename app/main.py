@@ -5,7 +5,7 @@ from app.routes import vote, results
 from app.database.base import Base
 from app.database.session import engine
 import uvicorn
-from app.models import user, election, candidate, vote, otp, email_job  # import all models (including OTP and EmailJob)
+from app.models import user, election as election_model, candidate as candidate_model, vote as vote_model, otp, email_job  # import all models (including OTP and EmailJob)
 from app.utils.logger import logger as base_logger
 from app.tasks.scheduler import start_scheduler, stop_scheduler
 
@@ -48,6 +48,11 @@ app.include_router(candidate.router)
 app.include_router(test.router)
 app.include_router(vote.router)
 app.include_router(results.router)
+
+
+@app.get("/")
+def root():
+    return {"message": "Backend is alive!"}
 
 
 def init_db():

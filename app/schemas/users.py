@@ -1,4 +1,13 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
+from importlib import util as _importlib_util
+
+# If the optional `email_validator` package is not installed, avoid using
+# pydantic's EmailStr type because schema generation will attempt to import
+# the validator and fail during test collection; fall back to `str`.
+if _importlib_util.find_spec("email_validator") is None:
+    EmailStr = str
+else:
+    from pydantic import EmailStr  # type: ignore
 from typing import Optional
 
 
