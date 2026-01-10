@@ -1,0 +1,1323 @@
+2026-01-09 20:43:27 | ERROR | blockchain.web3 | Blockchain not connected
+2026-01-09 20:49:59 | INFO | blockchain.web3 | Skipping blockchain connectivity check (testing=False, sqlite=False, dev=True)
+2026-01-09 20:49:59 | INFO | app | Database tables created
+2026-01-09 20:49:59 | INFO | scheduler | Scheduler started
+2026-01-09 20:49:59 | INFO | app | Application startup complete
+2026-01-09 20:50:23 | DEBUG | db.session | DB session opened
+2026-01-09 20:50:23 | INFO | auth | Registration attempt
+2026-01-09 20:50:23 | DEBUG | db.session | DB session closed
+2026-01-09 20:50:23 | INFO | deps.timing | handler_time
+2026-01-09 20:50:23 | ERROR | middleware.request_timing | Request failed
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/__main__.py", line 4, in <module>
+    uvicorn.main()
+    │       └ <Command main>
+    └ <module 'uvicorn' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/__init__.py'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x103074ae0>
+           └ <Command main>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x1030a57c0>
+         │    └ <function Command.invoke at 0x1030747c0>
+         └ <Command main>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'port': 8001, 'app': 'app.main:app', 'host': '127.0.0.1', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'relo...
+           │   │      │    │           └ <click.core.Context object at 0x1030a57c0>
+           │   │      │    └ <function main at 0x1031c0b80>
+           │   │      └ <Command main>
+           │   └ <function Context.invoke at 0x10306f9c0>
+           └ <click.core.Context object at 0x1030a57c0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'port': 8001, 'app': 'app.main:app', 'host': '127.0.0.1', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'relo...
+           │         └ ()
+           └ <function main at 0x1031c0b80>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/main.py", line 423, in main
+    run(
+    └ <function run at 0x103134900>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/main.py", line 593, in run
+    server.run()
+    │      └ <function Server.run at 0x103134180>
+    └ <uvicorn.server.Server object at 0x103193b90>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x103087c40>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x1026bd8b0>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x103193b90>
+           │           │    │             └ None
+           │           │    └ <function Server.serve at 0x103134220>
+           │           └ <uvicorn.server.Server object at 0x103193b90>
+           └ <function run at 0x102bccf40>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x10314fca0>
+           │      └ <function Runner.run at 0x102d62f20>
+           └ <asyncio.runners.Runner object at 0x1030f4530>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x102d60ae0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x1030f4530>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 674, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x102d60a40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x102d62840>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x102bc4360>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x102fcb560>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x112f3ba40>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x112f3ba40>>
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x112e15280>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x102fcb560>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x112f3ba40>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x112f3ba40>>
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x112f3ba40>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x112f3ba40>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x112f38b60>
+          └ <fastapi.applications.FastAPI object at 0x112e15280>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x112f2be20>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x112f3ba40>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x112f38f80>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x112f38b60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x112f2be20>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x112f3ba40>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x112f38f20>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x112f38f80>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+                     │    │             │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x112f2bec0>
+                     │    │             └ <starlette.middleware.base._CachedRequest object at 0x112f3baa0>
+                     │    └ <function request_timing_middleware at 0x112ecf880>
+                     └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x112f38f20>
+
+> File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/middleware/request_timing.py", line 17, in request_timing_middleware
+    response: Response = await call_next(request)
+                               │         └ <starlette.middleware.base._CachedRequest object at 0x112f3baa0>
+                               └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x112f2bec0>
+
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+          │            │       │            │       └ <attribute '__context__' of 'BaseException' objects>
+          │            │       │            └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+          │            │       └ <attribute '__cause__' of 'BaseException' objects>
+          │            └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+          └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x112f5c360>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112f5c2c0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x112f38fb0>
+          └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x112f38f20>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x112f5c360>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112f5c2c0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x112f1ae40>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x112f38d40>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x112f38fb0>
+          └ <function wrap_app_handling_exceptions at 0x105c47a60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x112f9dc60>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112f5c2c0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x112f38d40>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x112f9dc60>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112f5c2c0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x112e8fda0>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x112f38d40>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x112f9dc60>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112f5c2c0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x112e8fda0>>
+          └ <fastapi.routing.APIRouter object at 0x112e8fda0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x112f9dc60>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112f5c2c0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │     └ <function Route.handle at 0x105c75080>
+          └ APIRoute(path='/auth/register', name='register', methods=['POST'])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x112f9dc60>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112f5c2c0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <function request_response.<locals>.app at 0x112eb68e0>
+          └ APIRoute(path='/auth/register', name='register', methods=['POST'])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x112f9dc60>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112f5c2c0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x105e79310>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x112f9dd00>
+          └ <function wrap_app_handling_exceptions at 0x105c47a60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x112f9de40>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112f5c2c0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x112f9dd00>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 111, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x105e79310>
+                     └ <function get_request_handler.<locals>.app at 0x112eb6a20>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x105c76f20>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 292, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+                 │                 │         │       └ {'db': <sqlalchemy.orm.session.Session object at 0x112f91550>, 'user': UserCreate(email='test@example.com', password='passwor...
+                 │                 │         └ <function register at 0x112862340>
+                 │                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+                 └ <function run_in_threadpool at 0x1045e9440>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+                 │     │         │        └ functools.partial(<function register at 0x112862340>, db=<sqlalchemy.orm.session.Session object at 0x112f91550>, user=UserCre...
+                 │     │         └ <function run_sync at 0x10466e200>
+                 │     └ <module 'anyio.to_thread' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/to_thre...
+                 └ <module 'anyio' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/__init__.py'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/to_thread.py", line 61, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+                 └ <function get_async_backend at 0x1045eb920>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2525, in run_sync_in_worker_thread
+    return await future
+                 └ <Future finished exception=ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_passw...
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+
+  File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/auths/routes.py", line 45, in register
+    hashed = hash_password(user.password)
+             │             │    └ 'password123'
+             │             └ UserCreate(email='test@example.com', password='password123')
+             └ <function hash_password at 0x112863d80>
+
+  File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/auths/hashing.py", line 7, in hash_password
+    return pwd_context.hash(password)
+           │           │    └ 'password123'
+           │           └ <function CryptContext.hash at 0x112961b20>
+           └ <CryptContext at 0x112716540>
+
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/context.py", line 2258, in hash
+    return record.hash(secret, **kwds)
+           │      │    │         └ {}
+           │      │    └ 'password123'
+           │      └ <classmethod(<function GenericHandler.hash at 0x112927380>)>
+           └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 779, in hash
+    self.checksum = self._calc_checksum(secret)
+    │    │          │    │              └ 'password123'
+    │    │          │    └ <function _NoBackend._calc_checksum at 0x112974540>
+    │    │          └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x112e2e270>
+    │    └ None
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x112e2e270>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 591, in _calc_checksum
+    self._stub_requires_backend()
+    │    └ <classmethod(<function BackendMixin._stub_requires_backend at 0x112955760>)>
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x112e2e270>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2254, in _stub_requires_backend
+    cls.set_backend()
+    │   └ <classmethod(<function BackendMixin.set_backend at 0x1129554e0>)>
+    └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2156, in set_backend
+    return owner.set_backend(name, dryrun=dryrun)
+           │     │           │            └ False
+           │     │           └ 'any'
+           │     └ <classmethod(<function BackendMixin.set_backend at 0x1129554e0>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2163, in set_backend
+    return cls.set_backend(name, dryrun=dryrun)
+           │   │           │            └ False
+           │   │           └ 'bcrypt'
+           │   └ <classmethod(<function BackendMixin.set_backend at 0x1129554e0>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2188, in set_backend
+    cls._set_backend(name, dryrun)
+    │   │            │     └ False
+    │   │            └ 'bcrypt'
+    │   └ <classmethod(<function SubclassBackendMixin._set_backend at 0x1129558a0>)>
+    └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2311, in _set_backend
+    super(SubclassBackendMixin, cls)._set_backend(name, dryrun)
+          │                     │                 │     └ False
+          │                     │                 └ 'bcrypt'
+          │                     └ <class 'passlib.handlers.bcrypt.bcrypt'>
+          └ <class 'passlib.utils.handlers.SubclassBackendMixin'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2224, in _set_backend
+    ok = loader(**kwds)
+         │        └ {'name': 'bcrypt', 'dryrun': False}
+         └ <bound method _BcryptBackend._load_backend_mixin of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 626, in _load_backend_mixin
+    return mixin_cls._finalize_backend_mixin(name, dryrun)
+           │         │                       │     └ False
+           │         │                       └ 'bcrypt'
+           │         └ <classmethod(<function _BcryptCommon._finalize_backend_mixin at 0x1129740e0>)>
+           └ <class 'passlib.handlers.bcrypt._BcryptBackend'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 421, in _finalize_backend_mixin
+    if detect_wrap_bug(IDENT_2A):
+       │               └ '$2a$'
+       └ <function _BcryptCommon._finalize_backend_mixin.<locals>.detect_wrap_bug at 0x113207880>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 380, in detect_wrap_bug
+    if verify(secret, bug_hash):
+       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+       └ <bound method GenericHandler.verify of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+           │       │    │              │        └ 'nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+           │       │    │              └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       │    └ <function _BcryptBackend._calc_checksum at 0x112974720>
+           │       └ <passlib.handlers.bcrypt._BcryptBackend object at 0x112eb8830>
+           └ <built-in function compare_digest>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 655, in _calc_checksum
+    hash = _bcrypt.hashpw(secret, config)
+           │       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.'
+           │       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       └ <built-in function hashpw>
+           └ <module 'bcrypt' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/bcrypt/__init__.py'>
+
+ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-01-09 20:50:37 | INFO | middleware.request_timing | http_request
+2026-01-09 20:50:37 | INFO | deps.timing | handler_time
+2026-01-09 20:50:46 | DEBUG | db.session | DB session opened
+2026-01-09 20:50:46 | INFO | auth | Registration attempt
+2026-01-09 20:50:46 | DEBUG | db.session | DB session closed
+2026-01-09 20:50:46 | INFO | deps.timing | handler_time
+2026-01-09 20:50:46 | ERROR | middleware.request_timing | Request failed
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/__main__.py", line 4, in <module>
+    uvicorn.main()
+    │       └ <Command main>
+    └ <module 'uvicorn' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/__init__.py'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x103074ae0>
+           └ <Command main>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x1030a57c0>
+         │    └ <function Command.invoke at 0x1030747c0>
+         └ <Command main>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'port': 8001, 'app': 'app.main:app', 'host': '127.0.0.1', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'relo...
+           │   │      │    │           └ <click.core.Context object at 0x1030a57c0>
+           │   │      │    └ <function main at 0x1031c0b80>
+           │   │      └ <Command main>
+           │   └ <function Context.invoke at 0x10306f9c0>
+           └ <click.core.Context object at 0x1030a57c0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'port': 8001, 'app': 'app.main:app', 'host': '127.0.0.1', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'relo...
+           │         └ ()
+           └ <function main at 0x1031c0b80>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/main.py", line 423, in main
+    run(
+    └ <function run at 0x103134900>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/main.py", line 593, in run
+    server.run()
+    │      └ <function Server.run at 0x103134180>
+    └ <uvicorn.server.Server object at 0x103193b90>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x103087c40>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x1026bd8b0>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x103193b90>
+           │           │    │             └ None
+           │           │    └ <function Server.serve at 0x103134220>
+           │           └ <uvicorn.server.Server object at 0x103193b90>
+           └ <function run at 0x102bccf40>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x10314fca0>
+           │      └ <function Runner.run at 0x102d62f20>
+           └ <asyncio.runners.Runner object at 0x1030f4530>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x102d60ae0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x1030f4530>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 674, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x102d60a40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x102d62840>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x102bc4360>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x102fcb560>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x113242c00>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x113242c00>>
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x112e15280>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x102fcb560>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x113242c00>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x113242c00>>
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x113242c00>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x113242c00>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x112f38b60>
+          └ <fastapi.applications.FastAPI object at 0x112e15280>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x11326bf60>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x113242c00>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x112f38f80>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x112f38b60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x11326bf60>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x113242c00>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x112f38f20>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x112f38f80>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+                     │    │             │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x11326bba0>
+                     │    │             └ <starlette.middleware.base._CachedRequest object at 0x113242e70>
+                     │    └ <function request_timing_middleware at 0x112ecf880>
+                     └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x112f38f20>
+
+> File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/middleware/request_timing.py", line 17, in request_timing_middleware
+    response: Response = await call_next(request)
+                               │         └ <starlette.middleware.base._CachedRequest object at 0x113242e70>
+                               └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x11326bba0>
+
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+          │            │       │            │       └ <attribute '__context__' of 'BaseException' objects>
+          │            │       │            └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+          │            │       └ <attribute '__cause__' of 'BaseException' objects>
+          │            └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+          └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x11326b9c0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112ecd120>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x112f38fb0>
+          └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x112f38f20>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x11326b9c0>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112ecd120>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x1132434a0>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x112f38d40>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x112f38fb0>
+          └ <function wrap_app_handling_exceptions at 0x105c47a60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x11326bd80>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112ecd120>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x112f38d40>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x11326bd80>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112ecd120>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x112e8fda0>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x112f38d40>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x11326bd80>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112ecd120>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x112e8fda0>>
+          └ <fastapi.routing.APIRouter object at 0x112e8fda0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x11326bd80>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112ecd120>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │     └ <function Route.handle at 0x105c75080>
+          └ APIRoute(path='/auth/register', name='register', methods=['POST'])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x11326bd80>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112ecd120>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <function request_response.<locals>.app at 0x112eb68e0>
+          └ APIRoute(path='/auth/register', name='register', methods=['POST'])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x11326bd80>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112ecd120>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x1132436b0>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x11326be20>
+          └ <function wrap_app_handling_exceptions at 0x105c47a60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x113207a60>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x112ecd120>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x11326be20>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 111, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x1132436b0>
+                     └ <function get_request_handler.<locals>.app at 0x112eb6a20>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x105c76f20>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 292, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+                 │                 │         │       └ {'db': <sqlalchemy.orm.session.Session object at 0x113243cb0>, 'user': UserCreate(email='test@example.com', password='passwor...
+                 │                 │         └ <function register at 0x112862340>
+                 │                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+                 └ <function run_in_threadpool at 0x1045e9440>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+                 │     │         │        └ functools.partial(<function register at 0x112862340>, db=<sqlalchemy.orm.session.Session object at 0x113243cb0>, user=UserCre...
+                 │     │         └ <function run_sync at 0x10466e200>
+                 │     └ <module 'anyio.to_thread' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/to_thre...
+                 └ <module 'anyio' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/__init__.py'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/to_thread.py", line 61, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+                 └ <function get_async_backend at 0x1045eb920>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2525, in run_sync_in_worker_thread
+    return await future
+                 └ <Future finished exception=ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_passw...
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+
+  File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/auths/routes.py", line 45, in register
+    hashed = hash_password(user.password)
+             │             │    └ 'password123'
+             │             └ UserCreate(email='test@example.com', password='password123')
+             └ <function hash_password at 0x112863d80>
+
+  File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/auths/hashing.py", line 7, in hash_password
+    return pwd_context.hash(password)
+           │           │    └ 'password123'
+           │           └ <function CryptContext.hash at 0x112961b20>
+           └ <CryptContext at 0x112716540>
+
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/context.py", line 2258, in hash
+    return record.hash(secret, **kwds)
+           │      │    │         └ {}
+           │      │    └ 'password123'
+           │      └ <classmethod(<function GenericHandler.hash at 0x112927380>)>
+           └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 779, in hash
+    self.checksum = self._calc_checksum(secret)
+    │    │          │    │              └ 'password123'
+    │    │          │    └ <function _NoBackend._calc_checksum at 0x112974540>
+    │    │          └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x113243da0>
+    │    └ None
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x113243da0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 591, in _calc_checksum
+    self._stub_requires_backend()
+    │    └ <classmethod(<function BackendMixin._stub_requires_backend at 0x112955760>)>
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x113243da0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2254, in _stub_requires_backend
+    cls.set_backend()
+    │   └ <classmethod(<function BackendMixin.set_backend at 0x1129554e0>)>
+    └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2156, in set_backend
+    return owner.set_backend(name, dryrun=dryrun)
+           │     │           │            └ False
+           │     │           └ 'any'
+           │     └ <classmethod(<function BackendMixin.set_backend at 0x1129554e0>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2163, in set_backend
+    return cls.set_backend(name, dryrun=dryrun)
+           │   │           │            └ False
+           │   │           └ 'bcrypt'
+           │   └ <classmethod(<function BackendMixin.set_backend at 0x1129554e0>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2188, in set_backend
+    cls._set_backend(name, dryrun)
+    │   │            │     └ False
+    │   │            └ 'bcrypt'
+    │   └ <classmethod(<function SubclassBackendMixin._set_backend at 0x1129558a0>)>
+    └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2311, in _set_backend
+    super(SubclassBackendMixin, cls)._set_backend(name, dryrun)
+          │                     │                 │     └ False
+          │                     │                 └ 'bcrypt'
+          │                     └ <class 'passlib.handlers.bcrypt.bcrypt'>
+          └ <class 'passlib.utils.handlers.SubclassBackendMixin'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2224, in _set_backend
+    ok = loader(**kwds)
+         │        └ {'name': 'bcrypt', 'dryrun': False}
+         └ <bound method _BcryptBackend._load_backend_mixin of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 626, in _load_backend_mixin
+    return mixin_cls._finalize_backend_mixin(name, dryrun)
+           │         │                       │     └ False
+           │         │                       └ 'bcrypt'
+           │         └ <classmethod(<function _BcryptCommon._finalize_backend_mixin at 0x1129740e0>)>
+           └ <class 'passlib.handlers.bcrypt._BcryptBackend'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 421, in _finalize_backend_mixin
+    if detect_wrap_bug(IDENT_2A):
+       │               └ '$2a$'
+       └ <function _BcryptCommon._finalize_backend_mixin.<locals>.detect_wrap_bug at 0x113488c20>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 380, in detect_wrap_bug
+    if verify(secret, bug_hash):
+       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+       └ <bound method GenericHandler.verify of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+           │       │    │              │        └ 'nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+           │       │    │              └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       │    └ <function _BcryptBackend._calc_checksum at 0x112974720>
+           │       └ <passlib.handlers.bcrypt._BcryptBackend object at 0x113243e00>
+           └ <built-in function compare_digest>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 655, in _calc_checksum
+    hash = _bcrypt.hashpw(secret, config)
+           │       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.'
+           │       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       └ <built-in function hashpw>
+           └ <module 'bcrypt' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/bcrypt/__init__.py'>
+
+ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-01-09 20:50:59 | INFO | scheduler | Running email retry job
+2026-01-09 20:50:59 | INFO | email | Processing pending emails
+2026-01-09 20:51:59 | INFO | scheduler | Running email retry job
+2026-01-09 20:51:59 | INFO | email | Processing pending emails
+2026-01-09 20:52:30 | INFO | blockchain.web3 | Skipping blockchain connectivity check (testing=False, sqlite=False, dev=True)
+2026-01-09 20:52:30 | INFO | app | Database tables created
+2026-01-09 20:52:30 | INFO | scheduler | Scheduler started
+2026-01-09 20:52:30 | INFO | app | Application startup complete
+2026-01-09 20:52:33 | DEBUG | db.session | DB session opened
+2026-01-09 20:52:33 | INFO | auth | Registration attempt
+2026-01-09 20:52:33 | DEBUG | db.session | DB session closed
+2026-01-09 20:52:33 | INFO | deps.timing | handler_time
+2026-01-09 20:52:33 | ERROR | middleware.request_timing | Request failed
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/__main__.py", line 4, in <module>
+    uvicorn.main()
+    │       └ <Command main>
+    └ <module 'uvicorn' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/__init__.py'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x103740ae0>
+           └ <Command main>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x103775640>
+         │    └ <function Command.invoke at 0x1037407c0>
+         └ <Command main>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'port': 8001, 'app': 'app.main:app', 'host': '127.0.0.1', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'relo...
+           │   │      │    │           └ <click.core.Context object at 0x103775640>
+           │   │      │    └ <function main at 0x10388cb80>
+           │   │      └ <Command main>
+           │   └ <function Context.invoke at 0x10373b9c0>
+           └ <click.core.Context object at 0x103775640>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'port': 8001, 'app': 'app.main:app', 'host': '127.0.0.1', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'relo...
+           │         └ ()
+           └ <function main at 0x10388cb80>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/main.py", line 423, in main
+    run(
+    └ <function run at 0x103800900>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/main.py", line 593, in run
+    server.run()
+    │      └ <function Server.run at 0x103800180>
+    └ <uvicorn.server.Server object at 0x10385fb90>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x103753c40>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x102da18b0>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x10385fb90>
+           │           │    │             └ None
+           │           │    └ <function Server.serve at 0x103800220>
+           │           └ <uvicorn.server.Server object at 0x10385fb90>
+           └ <function run at 0x103318f40>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x10381bca0>
+           │      └ <function Runner.run at 0x10349af20>
+           └ <asyncio.runners.Runner object at 0x103130470>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x103498ae0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x103130470>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 674, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x103498a40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x10349a840>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x103310360>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x103888800>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1085934d0>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1085934d0>>
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x108492ed0>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x103888800>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1085934d0>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1085934d0>>
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1085934d0>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1085934d0>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x1085907d0>
+          └ <fastapi.applications.FastAPI object at 0x108492ed0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x10858bc40>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1085934d0>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x108590a10>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x1085907d0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x10858bc40>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1085934d0>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x10850cef0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x108590a10>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+                     │    │             │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x10858bce0>
+                     │    │             └ <starlette.middleware.base._CachedRequest object at 0x1085932f0>
+                     │    └ <function request_timing_middleware at 0x1085234c0>
+                     └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x10850cef0>
+
+> File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/middleware/request_timing.py", line 17, in request_timing_middleware
+    response: Response = await call_next(request)
+                               │         └ <starlette.middleware.base._CachedRequest object at 0x1085932f0>
+                               └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x10858bce0>
+
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+          │            │       │            │       └ <attribute '__context__' of 'BaseException' objects>
+          │            │       │            └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+          │            │       └ <attribute '__cause__' of 'BaseException' objects>
+          │            └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+          └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x1085b8180>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1085b80e0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x108590980>
+          └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x10850cef0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x1085b8180>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1085b80e0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x107746f60>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x1085907a0>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x108590980>
+          └ <function wrap_app_handling_exceptions at 0x1053dba60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x108520cc0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1085b80e0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x1085907a0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x108520cc0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1085b80e0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x1084df950>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x1085907a0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x108520cc0>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1085b80e0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x1084df950>>
+          └ <fastapi.routing.APIRouter object at 0x1084df950>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x108520cc0>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1085b80e0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │     └ <function Route.handle at 0x105409080>
+          └ APIRoute(path='/auth/register', name='register', methods=['POST'])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x108520cc0>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1085b80e0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <function request_response.<locals>.app at 0x108523920>
+          └ APIRoute(path='/auth/register', name='register', methods=['POST'])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x108520cc0>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1085b80e0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x108593b30>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x108520d60>
+          └ <function wrap_app_handling_exceptions at 0x1053dba60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x108444ae0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1085b80e0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x108520d60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 111, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x108593b30>
+                     └ <function get_request_handler.<locals>.app at 0x108520ae0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x10540af20>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 292, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+                 │                 │         │       └ {'db': <sqlalchemy.orm.session.Session object at 0x1085e52b0>, 'user': UserCreate(email='candidate1@test.com', password='pass...
+                 │                 │         └ <function register at 0x1076627a0>
+                 │                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+                 └ <function run_in_threadpool at 0x104ae5440>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+                 │     │         │        └ functools.partial(<function register at 0x1076627a0>, db=<sqlalchemy.orm.session.Session object at 0x1085e52b0>, user=UserCre...
+                 │     │         └ <function run_sync at 0x104b6a200>
+                 │     └ <module 'anyio.to_thread' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/to_thre...
+                 └ <module 'anyio' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/__init__.py'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/to_thread.py", line 61, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+                 └ <function get_async_backend at 0x104ae7920>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2525, in run_sync_in_worker_thread
+    return await future
+                 └ <Future finished exception=ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_passw...
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+
+  File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/auths/routes.py", line 45, in register
+    hashed = hash_password(user.password)
+             │             │    └ 'pass123'
+             │             └ UserCreate(email='candidate1@test.com', password='pass123')
+             └ <function hash_password at 0x106bc8860>
+
+  File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/auths/hashing.py", line 7, in hash_password
+    return pwd_context.hash(password)
+           │           │    └ 'pass123'
+           │           └ <function CryptContext.hash at 0x107639b20>
+           └ <CryptContext at 0x107553230>
+
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/context.py", line 2258, in hash
+    return record.hash(secret, **kwds)
+           │      │    │         └ {}
+           │      │    └ 'pass123'
+           │      └ <classmethod(<function GenericHandler.hash at 0x107603380>)>
+           └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 779, in hash
+    self.checksum = self._calc_checksum(secret)
+    │    │          │    │              └ 'pass123'
+    │    │          │    └ <function _NoBackend._calc_checksum at 0x107648540>
+    │    │          └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x108549430>
+    │    └ None
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x108549430>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 591, in _calc_checksum
+    self._stub_requires_backend()
+    │    └ <classmethod(<function BackendMixin._stub_requires_backend at 0x107631760>)>
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x108549430>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2254, in _stub_requires_backend
+    cls.set_backend()
+    │   └ <classmethod(<function BackendMixin.set_backend at 0x1076314e0>)>
+    └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2156, in set_backend
+    return owner.set_backend(name, dryrun=dryrun)
+           │     │           │            └ False
+           │     │           └ 'any'
+           │     └ <classmethod(<function BackendMixin.set_backend at 0x1076314e0>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2163, in set_backend
+    return cls.set_backend(name, dryrun=dryrun)
+           │   │           │            └ False
+           │   │           └ 'bcrypt'
+           │   └ <classmethod(<function BackendMixin.set_backend at 0x1076314e0>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2188, in set_backend
+    cls._set_backend(name, dryrun)
+    │   │            │     └ False
+    │   │            └ 'bcrypt'
+    │   └ <classmethod(<function SubclassBackendMixin._set_backend at 0x1076318a0>)>
+    └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2311, in _set_backend
+    super(SubclassBackendMixin, cls)._set_backend(name, dryrun)
+          │                     │                 │     └ False
+          │                     │                 └ 'bcrypt'
+          │                     └ <class 'passlib.handlers.bcrypt.bcrypt'>
+          └ <class 'passlib.utils.handlers.SubclassBackendMixin'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2224, in _set_backend
+    ok = loader(**kwds)
+         │        └ {'name': 'bcrypt', 'dryrun': False}
+         └ <bound method _BcryptBackend._load_backend_mixin of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 626, in _load_backend_mixin
+    return mixin_cls._finalize_backend_mixin(name, dryrun)
+           │         │                       │     └ False
+           │         │                       └ 'bcrypt'
+           │         └ <classmethod(<function _BcryptCommon._finalize_backend_mixin at 0x1076480e0>)>
+           └ <class 'passlib.handlers.bcrypt._BcryptBackend'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 421, in _finalize_backend_mixin
+    if detect_wrap_bug(IDENT_2A):
+       │               └ '$2a$'
+       └ <function _BcryptCommon._finalize_backend_mixin.<locals>.detect_wrap_bug at 0x10875b920>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 380, in detect_wrap_bug
+    if verify(secret, bug_hash):
+       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+       └ <bound method GenericHandler.verify of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+           │       │    │              │        └ 'nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+           │       │    │              └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       │    └ <function _BcryptBackend._calc_checksum at 0x107648720>
+           │       └ <passlib.handlers.bcrypt._BcryptBackend object at 0x108472180>
+           └ <built-in function compare_digest>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 655, in _calc_checksum
+    hash = _bcrypt.hashpw(secret, config)
+           │       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.'
+           │       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       └ <built-in function hashpw>
+           └ <module 'bcrypt' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/bcrypt/__init__.py'>
+
+ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-01-09 20:53:30 | INFO | scheduler | Running email retry job
+2026-01-09 20:53:30 | INFO | email | Processing pending emails
+2026-01-09 20:53:34 | DEBUG | db.session | DB session opened
+2026-01-09 20:53:34 | INFO | auth | Registration attempt
+2026-01-09 20:53:34 | DEBUG | db.session | DB session closed
+2026-01-09 20:53:34 | INFO | deps.timing | handler_time
+2026-01-09 20:53:34 | ERROR | middleware.request_timing | Request failed
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/__main__.py", line 4, in <module>
+    uvicorn.main()
+    │       └ <Command main>
+    └ <module 'uvicorn' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/__init__.py'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x103740ae0>
+           └ <Command main>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x103775640>
+         │    └ <function Command.invoke at 0x1037407c0>
+         └ <Command main>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'port': 8001, 'app': 'app.main:app', 'host': '127.0.0.1', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'relo...
+           │   │      │    │           └ <click.core.Context object at 0x103775640>
+           │   │      │    └ <function main at 0x10388cb80>
+           │   │      └ <Command main>
+           │   └ <function Context.invoke at 0x10373b9c0>
+           └ <click.core.Context object at 0x103775640>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'port': 8001, 'app': 'app.main:app', 'host': '127.0.0.1', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'relo...
+           │         └ ()
+           └ <function main at 0x10388cb80>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/main.py", line 423, in main
+    run(
+    └ <function run at 0x103800900>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/main.py", line 593, in run
+    server.run()
+    │      └ <function Server.run at 0x103800180>
+    └ <uvicorn.server.Server object at 0x10385fb90>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x103753c40>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x102da18b0>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x10385fb90>
+           │           │    │             └ None
+           │           │    └ <function Server.serve at 0x103800220>
+           │           └ <uvicorn.server.Server object at 0x10385fb90>
+           └ <function run at 0x103318f40>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x10381bca0>
+           │      └ <function Runner.run at 0x10349af20>
+           └ <asyncio.runners.Runner object at 0x103130470>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x103498ae0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x103130470>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 674, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x103498a40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 641, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x10349a840>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 1987, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x103310360>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x103888800>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1087f7fb0>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1087f7fb0>>
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x108492ed0>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x103888800>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1087f7fb0>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1087f7fb0>>
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1087f7fb0>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1087f7fb0>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x1085907d0>
+          └ <fastapi.applications.FastAPI object at 0x108492ed0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x1087b3ce0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1087f7fb0>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x108590a10>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x1085907d0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x1087b3ce0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x1087f7fb0>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x10850cef0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x108590a10>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+                     │    │             │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x1087b3ba0>
+                     │    │             └ <starlette.middleware.base._CachedRequest object at 0x1087f7d70>
+                     │    └ <function request_timing_middleware at 0x1085234c0>
+                     └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x10850cef0>
+
+> File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/middleware/request_timing.py", line 17, in request_timing_middleware
+    response: Response = await call_next(request)
+                               │         └ <starlette.middleware.base._CachedRequest object at 0x1087f7d70>
+                               └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x1087b3ba0>
+
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+          │            │       │            │       └ <attribute '__context__' of 'BaseException' objects>
+          │            │       │            └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+          │            │       └ <attribute '__cause__' of 'BaseException' objects>
+          │            └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+          └ ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])')
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x1087b3e20>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1087b3ec0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x108590980>
+          └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x10850cef0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x1087b3e20>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1087b3ec0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │                            │    │    └ <starlette.requests.Request object at 0x1087f7fe0>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x1085907a0>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x108590980>
+          └ <function wrap_app_handling_exceptions at 0x1053dba60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1089d1300>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1087b3ec0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x1085907a0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1089d1300>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1087b3ec0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x1084df950>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x1085907a0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1089d1300>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1087b3ec0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x1084df950>>
+          └ <fastapi.routing.APIRouter object at 0x1084df950>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1089d1300>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1087b3ec0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │     └ <function Route.handle at 0x105409080>
+          └ APIRoute(path='/auth/register', name='register', methods=['POST'])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1089d1300>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1087b3ec0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │    └ <function request_response.<locals>.app at 0x108523920>
+          └ APIRoute(path='/auth/register', name='register', methods=['POST'])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 125, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1089d1300>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1087b3ec0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          │                            │    └ <starlette.requests.Request object at 0x1089e0470>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x1089d13a0>
+          └ <function wrap_app_handling_exceptions at 0x1053dba60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x1089d1620>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x1087b3ec0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8001), 'cl...
+          └ <function request_response.<locals>.app.<locals>.app at 0x1089d13a0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 111, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x1089e0470>
+                     └ <function get_request_handler.<locals>.app at 0x108520ae0>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x10540af20>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/fastapi/routing.py", line 292, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+                 │                 │         │       └ {'db': <sqlalchemy.orm.session.Session object at 0x1089e0ad0>, 'user': UserCreate(email='test2@test.com', password='abc'), 'b...
+                 │                 │         └ <function register at 0x1076627a0>
+                 │                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+                 └ <function run_in_threadpool at 0x104ae5440>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+                 │     │         │        └ functools.partial(<function register at 0x1076627a0>, db=<sqlalchemy.orm.session.Session object at 0x1089e0ad0>, user=UserCre...
+                 │     │         └ <function run_sync at 0x104b6a200>
+                 │     └ <module 'anyio.to_thread' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/to_thre...
+                 └ <module 'anyio' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/__init__.py'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/to_thread.py", line 61, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+                 └ <function get_async_backend at 0x104ae7920>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2525, in run_sync_in_worker_thread
+    return await future
+                 └ <Future finished exception=ValueError('password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_passw...
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+
+  File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/auths/routes.py", line 45, in register
+    hashed = hash_password(user.password)
+             │             │    └ 'abc'
+             │             └ UserCreate(email='test2@test.com', password='abc')
+             └ <function hash_password at 0x106bc8860>
+
+  File "/Users/best/Desktop/Debbie/blockchain-voting-system/blockchain-voting-system/app/auths/hashing.py", line 7, in hash_password
+    return pwd_context.hash(password)
+           │           │    └ 'abc'
+           │           └ <function CryptContext.hash at 0x107639b20>
+           └ <CryptContext at 0x107553230>
+
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/context.py", line 2258, in hash
+    return record.hash(secret, **kwds)
+           │      │    │         └ {}
+           │      │    └ 'abc'
+           │      └ <classmethod(<function GenericHandler.hash at 0x107603380>)>
+           └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 779, in hash
+    self.checksum = self._calc_checksum(secret)
+    │    │          │    │              └ 'abc'
+    │    │          │    └ <function _NoBackend._calc_checksum at 0x107648540>
+    │    │          └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x1089e0b60>
+    │    └ None
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x1089e0b60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 591, in _calc_checksum
+    self._stub_requires_backend()
+    │    └ <classmethod(<function BackendMixin._stub_requires_backend at 0x107631760>)>
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x1089e0b60>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2254, in _stub_requires_backend
+    cls.set_backend()
+    │   └ <classmethod(<function BackendMixin.set_backend at 0x1076314e0>)>
+    └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2156, in set_backend
+    return owner.set_backend(name, dryrun=dryrun)
+           │     │           │            └ False
+           │     │           └ 'any'
+           │     └ <classmethod(<function BackendMixin.set_backend at 0x1076314e0>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2163, in set_backend
+    return cls.set_backend(name, dryrun=dryrun)
+           │   │           │            └ False
+           │   │           └ 'bcrypt'
+           │   └ <classmethod(<function BackendMixin.set_backend at 0x1076314e0>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2188, in set_backend
+    cls._set_backend(name, dryrun)
+    │   │            │     └ False
+    │   │            └ 'bcrypt'
+    │   └ <classmethod(<function SubclassBackendMixin._set_backend at 0x1076318a0>)>
+    └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2311, in _set_backend
+    super(SubclassBackendMixin, cls)._set_backend(name, dryrun)
+          │                     │                 │     └ False
+          │                     │                 └ 'bcrypt'
+          │                     └ <class 'passlib.handlers.bcrypt.bcrypt'>
+          └ <class 'passlib.utils.handlers.SubclassBackendMixin'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2224, in _set_backend
+    ok = loader(**kwds)
+         │        └ {'name': 'bcrypt', 'dryrun': False}
+         └ <bound method _BcryptBackend._load_backend_mixin of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 626, in _load_backend_mixin
+    return mixin_cls._finalize_backend_mixin(name, dryrun)
+           │         │                       │     └ False
+           │         │                       └ 'bcrypt'
+           │         └ <classmethod(<function _BcryptCommon._finalize_backend_mixin at 0x1076480e0>)>
+           └ <class 'passlib.handlers.bcrypt._BcryptBackend'>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 421, in _finalize_backend_mixin
+    if detect_wrap_bug(IDENT_2A):
+       │               └ '$2a$'
+       └ <function _BcryptCommon._finalize_backend_mixin.<locals>.detect_wrap_bug at 0x1089d2020>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 380, in detect_wrap_bug
+    if verify(secret, bug_hash):
+       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+       └ <bound method GenericHandler.verify of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/utils/handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+           │       │    │              │        └ 'nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+           │       │    │              └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       │    └ <function _BcryptBackend._calc_checksum at 0x107648720>
+           │       └ <passlib.handlers.bcrypt._BcryptBackend object at 0x1089e0e00>
+           └ <built-in function compare_digest>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 655, in _calc_checksum
+    hash = _bcrypt.hashpw(secret, config)
+           │       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.'
+           │       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       └ <built-in function hashpw>
+           └ <module 'bcrypt' from '/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/bcrypt/__init__.py'>
+
+ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-01-09 20:54:30 | INFO | scheduler | Running email retry job
+2026-01-09 20:54:30 | INFO | email | Processing pending emails
